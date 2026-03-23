@@ -1,0 +1,9 @@
+services:
+  next-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio-app
+    ports:
+      - "3000:3000"
+    restart: always
