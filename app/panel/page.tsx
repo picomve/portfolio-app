@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import ProjectEditorForm from '@/components/ProjectEditorForm';
+import ProjectsPanel from '@/components/ProjectsPanel';
 import { deleteProjectAction, lockPanel, saveProjectsJsonAction, unlockPanel } from './actions';
 import { isPanelAuthenticated, isPanelPasswordEnabled } from '@/utils/panel-auth';
 import { getProjects } from '@/utils/projects';
@@ -133,27 +134,7 @@ export default async function PanelPage({ searchParams }: PanelPageProps) {
           </div>
         )}
 
-        <section className="mb-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div className="mb-4">
-            <h2 className="text-xl font-bold text-slate-900">Edit raw `projects.json`</h2>
-            <p className="mt-2 text-sm text-slate-600">
-              If you want full control, edit the complete JSON array here and save it directly.
-            </p>
-          </div>
-
-          <form action={saveProjectsJsonAction} className="space-y-4">
-            <textarea
-              name="projectsJson"
-              defaultValue={JSON.stringify(projects, null, 2)}
-              rows={18}
-              spellCheck={false}
-              className="w-full rounded-xl border border-slate-300 bg-slate-950 p-4 font-mono text-sm text-cyan-100 outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200"
-            />
-            <button className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">
-              Save `projects.json`
-            </button>
-          </form>
-        </section>
+        <ProjectsPanel projects={projects} />
 
         <div className="grid gap-8 xl:grid-cols-[0.9fr,1.4fr]">
           <aside className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm xl:sticky xl:top-24 xl:self-start">

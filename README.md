@@ -1,18 +1,13 @@
 # Picomve's Portfolio App
 
-A modern, responsive Progressive Web App (PWA) built with Next.js to showcase development skills and projects. Clean design, fast performance, and professional presentation.
+A modern, responsive Progressive Web App (PWA) built with Next.js to showcase my development skills and projects. Clean design, fast performance, and professional presentation.
 
 ![Portfolio Preview](./assets/screenshots/ss0.png)
 
-## 🌟 Features
+## TO-DO
 
-- **Responsive Design** - Optimized for all devices and screen sizes
-- **Progressive Web App** - Offline support and native app-like experience
-- **SEO Optimized** - Built-in search engine optimization for better discoverability
-- **Modern Architecture** - Clean, modular codebase with TypeScript
-- **Fast Performance** - Server-side rendering and optimized loading
-- **Interactive Projects** - Dynamic project pages with detailed information
-- **Contact Form** - Easy way for visitors to get in touch
+- Make panel is only can be entered with a username
+- Make contact page is working (cuz its not now)
 
 ## 🛠️ Tech Stack
 
@@ -23,12 +18,6 @@ A modern, responsive Progressive Web App (PWA) built with Next.js to showcase de
 - **Content:** React Markdown
 - **Build Tool:** Next.js CLI
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- npm, yarn, pnpm, or bun
 
 ### Installation
 
@@ -57,29 +46,6 @@ pnpm dev
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 📁 Project Structure
-
-```
-portfolio-app/
-├── app/                    # Next.js App Router
-│   ├── about/             # About page
-│   ├── contact/           # Contact page
-│   ├── projects/          # Projects section
-│   │   └── [id]/         # Dynamic project pages
-│   ├── globals.css       # Global styles
-│   ├── layout.tsx        # Root layout
-│   └── page.tsx          # Home page
-├── components/            # Reusable React components
-│   ├── Footer.tsx        # Site footer
-│   ├── Header.tsx        # Site header
-│   ├── ProjectCard.tsx   # Project card component
-│   └── Projects.tsx      # Projects listing
-├── hooks/                 # Custom React hooks
-├── public/                # Static assets
-└── utils/                 # Utility functions
-    └── projects.ts       # Project data and types
-```
 
 ## 🎨 Customization
 
