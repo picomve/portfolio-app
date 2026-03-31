@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Markdown from 'react-markdown';
-import { getProjectById, projects } from '../../../utils/projects';
+import { getProjectById, getProjects } from '../../../utils/projects';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -11,11 +11,13 @@ interface Props {
 export default async function ProjectPage({ params }: Props) {
   const { id } = await params;
   const projectId = Number(id);
-  const project = getProjectById(projectId);
+  const project = await getProjectById(projectId);
 
   if (!project) {
     notFound();
   }
+
+  const projects = await getProjects();
 
   return (
     <section className="py-16 bg-white">
@@ -25,7 +27,7 @@ export default async function ProjectPage({ params }: Props) {
         </Link>
         <div className="grid gap-10 lg:grid-cols-3 items-start">
           <div className="lg:col-span-2">
-            <h1 className="text-4xl font-bold text-slate-900 mb-6">{project?.title}</h1>
+            <h1 className="text-4xl font-bold text-slate-900 mb-6">{project.title}</h1>
             <div className="prose prose-sm max-w-none mb-8 text-slate-700">
               <Markdown
                 components={{
@@ -38,18 +40,18 @@ export default async function ProjectPage({ params }: Props) {
                   strong: ({ node, ...props }) => <strong className="font-semibold text-slate-900" {...props} />,
                 }}
               >
-                {project?.details || ''}
+                {project.details}
               </Markdown>
             </div>
             <div className="flex flex-wrap gap-2 mb-6">
-              {project?.technologies.map((tech) => (
+              {project.technologies.map((tech) => (
                 <span key={tech} className="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm">
                   {tech}
                 </span>
               ))}
             </div>
             <div className="flex gap-4">
-              {project?.githubUrl && (
+              {project.githubUrl && (
                 <a
                   href={project.githubUrl}
                   target="_blank"
@@ -59,7 +61,7 @@ export default async function ProjectPage({ params }: Props) {
                   GitHub Repository
                 </a>
               )}
-              {project?.liveUrl && (
+              {project.liveUrl && (
                 <a
                   href={project.liveUrl}
                   target="_blank"
@@ -72,17 +74,17 @@ export default async function ProjectPage({ params }: Props) {
             </div>
           </div>
           <div className="rounded-2xl overflow-hidden shadow-lg h-72 relative">
-            <Image src={project?.image ?? ''} alt={project?.title ?? 'Project image'} fill className="object-cover" />
+            <Image src={project.image} alt={project.title} fill className="object-cover" />
           </div>
         </div>
         <div className="mt-12 text-slate-500">
           <span className="font-semibold text-slate-700">Other projects:</span>
           <div className="mt-3 flex flex-wrap gap-2">
             {projects
-              .filter((p) => p.id !== project?.id)
-              .map((p) => (
-                <Link key={p.id} href={`/projects/${p.id}`} className="text-sm text-cyan-600 hover:text-cyan-800">
-                  {p.title}
+              .filter((currentProject) => currentProject.id !== project.id)
+              .map((currentProject) => (
+                <Link key={currentProject.id} href={`/projects/${currentProject.id}`} className="text-sm text-cyan-600 hover:text-cyan-800">
+                  {currentProject.title}
                 </Link>
               ))}
           </div>

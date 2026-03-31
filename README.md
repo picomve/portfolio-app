@@ -2,7 +2,7 @@
 
 A modern, responsive Progressive Web App (PWA) built with Next.js to showcase development skills and projects. Clean design, fast performance, and professional presentation.
 
-![Portfolio Preview](https://via.placeholder.com/800x400/00bcd4/ffffff?text=Portfolio+App+Preview)
+![Portfolio Preview](./assets/screenshots/ss0.png)
 
 ## 🌟 Features
 
