@@ -1,8 +1,10 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
-import { projects } from '../utils/projects';
+import { getProjects } from '../utils/projects';
 
-const Projects = () => {
+const Projects = async () => {
+  const projects = await getProjects();
+
   return (
     <section className="py-16 bg-slate-50">
       <div className="container mx-auto px-4">

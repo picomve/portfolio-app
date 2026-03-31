@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Projects from '../components/Projects';
 
 export default function Home() {
@@ -9,12 +10,20 @@ export default function Home() {
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-8">
             Explore my projects, read about me, and get in touch. Clean, responsive, and professional design.
           </p>
-          <div className="inline-flex gap-4">
+          <div className="inline-flex flex-wrap justify-center gap-4">
             <a href="#projects" className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-lg font-semibold transition">
               View Projects
             </a>
-            <a href="/contact" className="border border-cyan-600 text-cyan-600 px-6 py-3 rounded-lg hover:bg-cyan-50 transition">
+            <Link href="/contact" className="border border-cyan-600 text-cyan-600 px-6 py-3 rounded-lg hover:bg-cyan-50 transition">
               Contact Me
+            </Link>
+            <a
+              href="https://github.com/picomve"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-slate-300 text-slate-700 px-6 py-3 rounded-lg hover:bg-slate-50 transition"
+            >
+              GitHub
             </a>
           </div>
         </div>
