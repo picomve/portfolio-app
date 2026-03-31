@@ -23,11 +23,15 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
+# Runtime'da CMS verilerinin yazılabilmesi için data klasörünü de ekliyoruz
+RUN mkdir -p /app/data && chown -R nextjs:nodejs /app
+
 # Build aşamasından sadece gerekli dosyaları alıyoruz
-COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=nextjs:nodejs /app/package.json ./package.json
+COPY --from=builder --chown=nextjs:nodejs /app/data ./data
 
 USER nextjs
 

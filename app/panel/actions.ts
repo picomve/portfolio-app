@@ -5,7 +5,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { deleteProjectById, updateProjectsFromJson, upsertProject } from '@/utils/projects';
-import { getPanelPassword, isPanelAuthenticated, panelCookieName } from '@/utils/panel-auth';
+import { createPanelSessionToken, getPanelPassword, isPanelAuthenticated, panelCookieName } from '@/utils/panel-auth';
 
 const panelCookieOptions = {
   httpOnly: true,
@@ -41,7 +41,7 @@ export async function unlockPanel(formData: FormData) {
   }
 
   const cookieStore = await cookies();
-  cookieStore.set(panelCookieName, expectedPassword, panelCookieOptions);
+  cookieStore.set(panelCookieName, createPanelSessionToken(expectedPassword), panelCookieOptions);
   redirect('/panel?status=authenticated');
 }
 
