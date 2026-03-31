@@ -14,7 +14,8 @@ export interface Project {
 
 export type ProjectInput = Omit<Project, 'id'> & { id?: number };
 
-const dataFilePath = path.join(process.cwd(), 'data', 'projects.json');
+const dataDirectory = process.env.DATA_DIR?.trim() || path.join(process.cwd(), 'data');
+const dataFilePath = path.join(dataDirectory, 'projects.json');
 
 const fallbackProjects: Project[] = [
   {
