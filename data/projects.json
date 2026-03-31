@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Picomve's portfolio app",
     "description": "A basic PWA web application to showcase my skills and projects",
-    "image": "/example-project1.jpg",
+    "image": "https://picsum.photos/id/1/5000/3333.jpg",
     "technologies": [
       "React",
       "Node.js",
@@ -13,6 +13,6 @@
     ],
     "githubUrl": "https://github.com/picomve/portfolio-app",
     "liveUrl": "https://www.picomve.info",
-    "details": "## Project Overview\n\nI developed this high-performance, responsive **Progressive Web App (PWA)** using Next.js to effectively showcase my full-stack development skills and featured projects.\n\n## Key Features\n\n- **Responsive Design** - Works seamlessly across all devices\n- **PWA Capabilities** - Offline support and fast loading times\n- **SEO Optimized** - Built-in search engine optimization\n- **Modern Architecture** - Clean, modular codebase\n\n## Technical Stack\n\nThe application leverages modern web standards including:\n\n1. Next.js for server-side rendering\n2. React for dynamic UI components\n3. TypeScript for type safety\n4. Tailwind CSS for styling\n5. Node.js backend services\n\n## Impact\n\nThis project serves as a living portfolio of my technical journey and demonstrates my commitment to delivering user-centric digital solutions with polished UI/UX design."
+    "details": "## Project Overview\r\n\r\nI developed this high-performance, responsive **Progressive Web App (PWA)** using Next.js to effectively showcase my full-stack development skills and featured projects.\r\n\r\n## Key Features\r\n\r\n- **Responsive Design** - Works seamlessly across all devices\r\n- **PWA Capabilities** - Offline support and fast loading times\r\n- **SEO Optimized** - Built-in search engine optimization\r\n- **Modern Architecture** - Clean, modular codebase\r\n\r\n## Technical Stack\r\n\r\nThe application leverages modern web standards including:\r\n\r\n1. Next.js for server-side rendering\r\n2. React for dynamic UI components\r\n3. TypeScript for type safety\r\n4. Tailwind CSS for styling\r\n5. Node.js backend services\r\n\r\n## Impact\r\n\r\nThis project serves as a living portfolio of my technical journey and demonstrates my commitment to delivering user-centric digital solutions with polished UI/UX design."
   }
 ]
