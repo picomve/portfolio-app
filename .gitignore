@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Node js
 package-lock.json
+
+#Istisna hojam
+Dockerfile
