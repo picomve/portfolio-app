@@ -2,9 +2,6 @@ import { Resend } from 'resend';
 import { redirect } from 'next/navigation';
 
 const recipientEmail = process.env.CONTACT_RECIPIENT_EMAIL ?? 'halilibrahim.ataylar@proton.me';
-const resendApiKey = process.env.RESEND_API_KEY;
-
-const resend = new Resend(resendApiKey);
 
 export async function sendContactEmail(formData: FormData) {
   'use server';
@@ -21,10 +18,12 @@ export async function sendContactEmail(formData: FormData) {
     redirect('/contact?status=invalid-email');
   }
 
+  const resendApiKey = process.env.RESEND_API_KEY;
   if (!resendApiKey) {
     redirect('/contact?status=api-key-missing');
   }
 
+  const resend = new Resend(resendApiKey);
   let sendError = false;
 
   try {
