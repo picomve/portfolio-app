@@ -3,7 +3,7 @@ FROM node:22.15.0-alpine AS deps
 # Alpine üzerinde bazı paketlerin derlenmesi için libc6-compat gerekebilir
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
-COPY package.json package-lock.json ./
+COPY package.json ./
 RUN npm ci
 
 # 2. Aşama: Uygulamayı derle (Build)
