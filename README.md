@@ -7,7 +7,9 @@ A modern, responsive Progressive Web App (PWA) built with Next.js to showcase my
 ## TO-DO
 
 - Make panel is only can be entered with a username
-- Make contact page is working (cuz its not now)
+
+
+✔ Make contact page is working (cuz its not now)
 
 ## 🛠️ Tech Stack
 
