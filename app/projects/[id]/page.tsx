@@ -74,7 +74,14 @@ export default async function ProjectPage({ params }: Props) {
             </div>
           </div>
           <div className="rounded-2xl overflow-hidden shadow-lg h-72 relative">
-            <Image src={project.image} alt={project.title} fill className="object-cover" />
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover"
+              loading="eager"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
           </div>
         </div>
         <div className="mt-12 text-slate-500">
