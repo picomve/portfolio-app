@@ -1,6 +1,6 @@
 # Picomve's Portfolio App
 
-A modern, responsive Progressive Web App (PWA) built with Next.js to showcase my development skills and projects. Clean design, fast performance, and professional presentation.
+A modern, responsive Progressive Web App built with Next.js to showcase my development skills and projects. Clean design, fast performance, and professional presentation.
 
 ![Portfolio Preview](./assets/screenshots/ss0.png)
 
@@ -109,7 +109,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🔗 Links
 
-- **Live Demo:** [https://www.picomve.info](https://www.picomve.info)
+- **Live Demo:** [https://www.picomve.com.tr](https://www.picomve.com.tr)
 - **GitHub Repository:** [https://github.com/picomve/portfolio-app](https://github.com/picomve/portfolio-app)
 
 ## 👨‍💻 About the Developer
