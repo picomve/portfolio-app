@@ -1,12 +1,35 @@
 import { put } from '@vercel/blob';
 import { NextRequest, NextResponse } from 'next/server';
 
+export const maxDuration = 60;
+
 export async function POST(request: NextRequest) {
   try {
+    // Check if token exists
+    const token = process.env.BLOB_READ_WRITE_TOKEN;
+    
+    console.log('=== Upload Request Started ===');
+    console.log('Token present:', !!token);
+    console.log('Token length:', token?.length);
+    console.log('Environment:', process.env.NODE_ENV);
+
+    if (!token) {
+      console.error('BLOB_READ_WRITE_TOKEN is not set');
+      return NextResponse.json(
+        { error: 'Server error: No Blob storage token configured' },
+        { status: 500 }
+      );
+    }
+
     const formData = await request.formData();
-    const file = formData.get('file') as File;
+    const file = formData.get('file') as File | null;
+
+    console.log('File received:', file?.name);
+    console.log('File type:', file?.type);
+    console.log('File size:', file?.size);
 
     if (!file) {
+      console.error('No file provided in request');
       return NextResponse.json(
         { error: 'No file provided' },
         { status: 400 }
@@ -16,8 +39,9 @@ export async function POST(request: NextRequest) {
     // Validate file type
     const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
     if (!allowedTypes.includes(file.type)) {
+      console.error('Invalid file type:', file.type);
       return NextResponse.json(
-        { error: 'Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.' },
+        { error: `Invalid file type: ${file.type}. Only JPEG, PNG, WebP, and GIF are allowed.` },
         { status: 400 }
       );
     }
@@ -25,28 +49,72 @@ export async function POST(request: NextRequest) {
     // Validate file size (5MB max)
     const maxSize = 5 * 1024 * 1024;
     if (file.size > maxSize) {
+      console.error('File too large:', file.size, 'bytes');
       return NextResponse.json(
-        { error: 'File too large. Maximum 5MB allowed.' },
+        { error: `File too large: ${file.size} bytes. Maximum 5MB allowed.` },
         { status: 400 }
       );
     }
 
     // Create unique filename
     const timestamp = Date.now();
-    const filename = `portfolio-${timestamp}-${file.name}`;
+    const sanitizedFileName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+    const filename = `portfolio-${timestamp}-${sanitizedFileName}`;
 
-    // Upload to Vercel Blob
-    const blob = await put(filename, file, {
-      access: 'public',
-      addRandomSuffix: false,
-    });
+    console.log('Uploading file:', filename);
 
-    return NextResponse.json({ url: blob.url });
+    try {
+      // Convert file to buffer for better compatibility
+      const buffer = await file.arrayBuffer();
+      console.log('Buffer created, size:', buffer.byteLength);
+
+      // Clean token (remove any quotes if they snuck in)
+      const cleanToken = token.replace(/^["']|["']$/g, '');
+      console.log('Token format check - starts with "vercel_blob_rw":', cleanToken.startsWith('vercel_blob_rw'));
+
+      // Upload to Vercel Blob with buffer
+      const blob = await put(filename, buffer, {
+        access: 'public',
+        token: cleanToken,
+      });
+
+      console.log('Upload successful:', filename);
+      console.log('Blob URL:', blob.url);
+
+      return NextResponse.json({ url: blob.url });
+    } catch (blobError) {
+      console.error('Vercel Blob error:', blobError instanceof Error ? blobError.message : String(blobError));
+      console.error('Blob error details:', blobError);
+      
+      // Re-throw to be caught by outer catch
+      throw blobError;
+    }
   } catch (error) {
-    console.error('Upload error:', error);
+    console.error('=== Upload Error ===');
+    console.error('Error type:', error instanceof Error ? error.constructor.name : typeof error);
+    console.error('Error message:', error instanceof Error ? error.message : String(error));
+    console.error('Full error:', error);
+
+    // Provide helpful error message
+    let statusCode = 500;
+    let errorMessage = 'Upload failed. Please try again.';
+
+    if (error instanceof Error) {
+      if (error.message.includes('401') || error.message.includes('Unauthorized')) {
+        statusCode = 401;
+        errorMessage = 'Authentication failed. Blob token may be invalid.';
+      } else if (error.message.includes('403') || error.message.includes('Forbidden')) {
+        statusCode = 403;
+        errorMessage = 'Permission denied. Check Blob token permissions.';
+      } else if (error.message.includes('ENOENT')) {
+        statusCode = 400;
+        errorMessage = 'File not found.';
+      }
+    }
+
     return NextResponse.json(
-      { error: 'Upload failed. Please try again.' },
-      { status: 500 }
+      { error: errorMessage },
+      { status: statusCode }
     );
   }
 }

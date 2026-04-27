@@ -27,6 +27,8 @@ export default function ProjectEditorForm({ project, submitLabel }: ProjectEdito
     setUploading(true);
     setUploadError('');
 
+    console.log('🖼️ File selected:', file.name, file.type, file.size, 'bytes');
+
     // Show preview immediately
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -38,25 +40,38 @@ export default function ProjectEditorForm({ project, submitLabel }: ProjectEdito
       const formData = new FormData();
       formData.append('file', file);
 
+      console.log('📤 Uploading to /api/upload...');
       const response = await fetch('/api/upload', {
         method: 'POST',
         body: formData,
       });
 
+      console.log('📨 Response status:', response.status, response.statusText);
+
       if (!response.ok) {
-        const error = await response.json();
-        setUploadError(error.error || 'Upload failed');
+        let errorMessage = 'Upload failed';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          errorMessage = `Upload failed with status ${response.status}`;
+        }
+        
+        console.error('❌ Upload error:', errorMessage);
+        setUploadError(errorMessage);
         setPreview('');
         return;
       }
 
       const { url } = await response.json();
+      console.log('✅ Upload successful:', url);
       setImageUrl(url);
       setUploadError('');
     } catch (error) {
-      setUploadError('Upload failed. Please try again.');
+      const errorMsg = error instanceof Error ? error.message : String(error);
+      console.error('❌ Upload exception:', errorMsg);
+      setUploadError('Upload failed. Please check browser console for details.');
       setPreview('');
-      console.error(error);
     } finally {
       setUploading(false);
     }
