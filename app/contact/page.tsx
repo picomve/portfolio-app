@@ -27,7 +27,7 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
           Feel free to reach out for freelance work, open-source collaborations, or just a friendly chat.
         </p>
         {statusMessage && (
-          <div className="mb-6 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+          <div className="mb-6 rounded-lg border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-700">
             {statusMessage}
           </div>
         )}
@@ -41,7 +41,7 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
               id="name"
               name="name"
               required
-              className="w-full border border-slate-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full border border-slate-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500"
             />
           </div>
           <div>
@@ -53,7 +53,7 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
               id="email"
               name="email"
               required
-              className="w-full border border-slate-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full border border-slate-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500"
             />
           </div>
           <div>
@@ -65,10 +65,10 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
               name="message"
               rows={5}
               required
-              className="w-full border border-slate-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full border border-slate-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500"
             />
           </div>
-          <button type="submit" className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-xl font-semibold">
+          <button type="submit" className="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-semibold">
             Send Message
           </button>
         </form>

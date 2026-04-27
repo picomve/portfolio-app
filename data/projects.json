@@ -1,18 +1,24 @@
 [
   {
-    "id": 1,
-    "title": "Picomve's portfolio app",
-    "description": "A basic PWA web application to showcase my skills and projects",
-    "image": "https://picsum.photos/id/1/5000/3333.jpg",
+    "id": 2,
+    "title": "Örnek proje hojam",
+    "description": "Kısa açıklamaa",
+    "image": "https://3h9k6k3nigp5apzk.public.blob.vercel-storage.com/portfolio-1776982929953-02.jpeg",
     "technologies": [
-      "React",
-      "Node.js",
-      "Next.js",
-      "Tailwind CSS",
-      "TypeScript"
+      "Node js",
+      "Electron js"
     ],
-    "githubUrl": "https://github.com/picomve/portfolio-app",
-    "liveUrl": "https://www.picomve.info",
-    "details": "## Project Overview\r\n\r\nI developed this high-performance, responsive **Progressive Web App (PWA)** using Next.js to effectively showcase my full-stack development skills and featured projects.\r\n\r\n## Key Features\r\n\r\n- **Responsive Design** - Works seamlessly across all devices\r\n- **PWA Capabilities** - Offline support and fast loading times\r\n- **SEO Optimized** - Built-in search engine optimization\r\n- **Modern Architecture** - Clean, modular codebase\r\n\r\n## Technical Stack\r\n\r\nThe application leverages modern web standards including:\r\n\r\n1. Next.js for server-side rendering\r\n2. React for dynamic UI components\r\n3. TypeScript for type safety\r\n4. Tailwind CSS for styling\r\n5. Node.js backend services\r\n\r\n## Impact\r\n\r\nThis project serves as a living portfolio of my technical journey and demonstrates my commitment to delivering user-centric digital solutions with polished UI/UX design."
+    "details": "asdad\r\noara\r\nbuara\r\nne bilim bişeler\r\n\r\nAnd i decided that why i dont show my skills using a project that shows my skills"
+  },
+  {
+    "id": 3,
+    "title": "Bakalim hadi demet akalın",
+    "description": "Bşak bir açklama daha",
+    "image": "https://3h9k6k3nigp5apzk.public.blob.vercel-storage.com/portfolio-1777066960184-1383-karma-%C3%B6zel-galerinizdeki-shitpostlar%C4%B1-d%C3%B6kme-postu-v0-b927yuisvyhe1.webp",
+    "technologies": [
+      "Bombabomba.com",
+      "TaklacıGüvercin"
+    ],
+    "details": "asd\r\nads\r\nad\r\nsad\r\nsad"
   }
 ]

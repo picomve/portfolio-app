@@ -2,22 +2,27 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <header className="bg-white border-b border-slate-200 sticky top-0 z-20 backdrop-blur-md">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold text-cyan-700">
-          Picomve's portfolio
+    <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/90 backdrop-blur-xl shadow-sm">
+      <div className="container mx-auto flex flex-wrap items-center justify-between gap-4 px-4 py-4">
+        <Link href="/" className="text-lg font-semibold tracking-tight text-slate-900">
+          Picomve
         </Link>
-        <nav className="flex gap-6 text-slate-600 font-medium">
-          <Link href="/" className="hover:text-cyan-700 transition-colors duration-200">
+
+        <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
+          <Link href="/" className="transition hover:text-sky-700">
             Home
           </Link>
-          <Link href="/about" className="hover:text-cyan-700 transition-colors duration-200">
+          <Link href="/about" className="transition hover:text-sky-700">
             About
           </Link>
-          <Link href="/contact" className="hover:text-cyan-700 transition-colors duration-200">
-            Contact
-          </Link>
         </nav>
+
+        <Link
+          href="/contact"
+          className="inline-flex items-center justify-center rounded-full bg-sky-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-sky-700"
+        >
+          Contact
+        </Link>
       </div>
     </header>
   );
