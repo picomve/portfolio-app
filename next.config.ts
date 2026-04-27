@@ -19,7 +19,12 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: '*.public.blob.vercel-storage.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'public.blob.vercel-storage.com',
+      },
     ],
+    unoptimized: process.env.NODE_ENV === 'production', // Disable optimization in production (Railway)
   },
   output: 'standalone',
   experimental: {

@@ -64,10 +64,18 @@ export async function POST(request: NextRequest) {
     console.log('Uploading file:', filename);
 
     try {
-      // Upload to Vercel Blob - pass token as option
-      const blob = await put(filename, file, {
+      // Convert file to buffer for better compatibility
+      const buffer = await file.arrayBuffer();
+      console.log('Buffer created, size:', buffer.byteLength);
+
+      // Clean token (remove any quotes if they snuck in)
+      const cleanToken = token.replace(/^["']|["']$/g, '');
+      console.log('Token format check - starts with "vercel_blob_rw":', cleanToken.startsWith('vercel_blob_rw'));
+
+      // Upload to Vercel Blob with buffer
+      const blob = await put(filename, buffer, {
         access: 'public',
-        token: token,
+        token: cleanToken,
       });
 
       console.log('Upload successful:', filename);
