@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import ProjectEditorForm from './ProjectEditorForm';
 import { Project } from '@/utils/projects';
@@ -41,7 +41,7 @@ export default function ProjectsPanel({ projects }: ProjectsPanelProps) {
                   {project.technologies.slice(0, 3).map((tech, index) => (
                     <span
                       key={index}
-                      className="bg-cyan-100 text-cyan-800 text-xs font-semibold uppercase tracking-wide px-2 py-1 rounded"
+                      className="bg-sky-100 text-sky-800 text-xs font-semibold uppercase tracking-wide px-2 py-1 rounded"
                     >
                       {tech}
                     </span>
@@ -52,7 +52,7 @@ export default function ProjectsPanel({ projects }: ProjectsPanelProps) {
                 </div>
                 <button
                   onClick={() => setEditingProject(project)}
-                  className="w-full bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-lg font-semibold transition text-sm"
+                  className="w-full bg-sky-600 hover:bg-sky-700 text-white px-4 py-2 rounded-lg font-semibold transition text-sm"
                 >
                   Edit Project
                 </button>

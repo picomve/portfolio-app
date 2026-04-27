@@ -22,7 +22,7 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4 max-w-5xl">
-        <Link href="/" className="text-cyan-600 hover:text-cyan-700 font-semibold mb-4 inline-block">
+        <Link href="/" className="text-sky-600 hover:text-sky-700 font-semibold mb-4 inline-block">
           ← Back to home
         </Link>
         <div className="grid gap-10 lg:grid-cols-3 items-start">
@@ -45,7 +45,7 @@ export default async function ProjectPage({ params }: Props) {
             </div>
             <div className="flex flex-wrap gap-2 mb-6">
               {project.technologies.map((tech) => (
-                <span key={tech} className="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm">
+                <span key={tech} className="bg-sky-100 text-sky-800 px-3 py-1 rounded-full text-sm">
                   {tech}
                 </span>
               ))}
@@ -56,7 +56,7 @@ export default async function ProjectPage({ params }: Props) {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-cyan-700 hover:text-cyan-900"
+                  className="font-semibold text-sky-700 hover:text-sky-900"
                 >
                   GitHub Repository
                 </a>
@@ -66,7 +66,7 @@ export default async function ProjectPage({ params }: Props) {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-cyan-700 hover:text-cyan-900"
+                  className="font-semibold text-sky-700 hover:text-sky-900"
                 >
                   Live Demo
                 </a>
@@ -90,7 +90,7 @@ export default async function ProjectPage({ params }: Props) {
             {projects
               .filter((currentProject) => currentProject.id !== project.id)
               .map((currentProject) => (
-                <Link key={currentProject.id} href={`/projects/${currentProject.id}`} className="text-sm text-cyan-600 hover:text-cyan-800">
+                <Link key={currentProject.id} href={`/projects/${currentProject.id}`} className="text-sm text-sky-600 hover:text-sky-800">
                   {currentProject.title}
                 </Link>
               ))}

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { saveProjectAction } from '@/app/panel/actions';
 import { Project } from '@/utils/projects';
+import { deleteProjectAction } from '@/app/panel/actions';
 
 interface ProjectEditorFormProps {
   project?: Project;
@@ -11,11 +12,11 @@ interface ProjectEditorFormProps {
 }
 
 const inputClassName =
-  'mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm outline-none transition focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200';
+  'mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200';
 
 export default function ProjectEditorForm({ project, submitLabel }: ProjectEditorFormProps) {
   const [imageUrl, setImageUrl] = useState<string>(project?.image ?? '');
-  const [preview, setPreview] = useState<string>(project?.image ?? '');
+  const [preview, setPreview] = useState<string>('');
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string>('');
 
@@ -45,7 +46,7 @@ export default function ProjectEditorForm({ project, submitLabel }: ProjectEdito
       if (!response.ok) {
         const error = await response.json();
         setUploadError(error.error || 'Upload failed');
-        setPreview(project?.image ?? '');
+        setPreview('');
         return;
       }
 
@@ -54,7 +55,7 @@ export default function ProjectEditorForm({ project, submitLabel }: ProjectEdito
       setUploadError('');
     } catch (error) {
       setUploadError('Upload failed. Please try again.');
-      setPreview(project?.image ?? '');
+      setPreview('');
       console.error(error);
     } finally {
       setUploading(false);
@@ -62,9 +63,10 @@ export default function ProjectEditorForm({ project, submitLabel }: ProjectEdito
   };
 
   return (
-    <form action={saveProjectAction} className="space-y-4">
-      <input type="hidden" name="id" defaultValue={project?.id ?? ''} />
-      <input type="hidden" name="image" value={imageUrl} />
+    <>
+      <form action={saveProjectAction} className="space-y-4">
+        <input type="hidden" name="id" defaultValue={project?.id ?? ''} />
+        <input type="hidden" name="image" value={imageUrl} />
 
       <div className="grid gap-4 md:grid-cols-2">
         <label className="block text-sm font-medium text-slate-700">
@@ -79,7 +81,7 @@ export default function ProjectEditorForm({ project, submitLabel }: ProjectEdito
             accept="image/jpeg,image/png,image/webp,image/gif"
             onChange={handleFileSelect}
             disabled={uploading}
-            className="mt-1 block w-full text-sm text-slate-500 file:rounded-lg file:border-0 file:bg-cyan-100 file:px-3 file:py-2 file:text-sm file:font-semibold file:text-cyan-700 hover:file:bg-cyan-200"
+            className="mt-1 block w-full text-sm text-slate-500 file:rounded-lg file:border-0 file:bg-sky-100 file:px-3 file:py-2 file:text-sm file:font-semibold file:text-sky-700 hover:file:bg-sky-200"
           />
         </label>
       </div>
@@ -162,13 +164,28 @@ export default function ProjectEditorForm({ project, submitLabel }: ProjectEdito
         />
       </label>
 
-      <button
-        type="submit"
-        disabled={uploading}
-        className="inline-flex items-center rounded-lg bg-cyan-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-cyan-700 disabled:opacity-50"
-      >
-        {submitLabel}
-      </button>
-    </form>
+      <div className="flex gap-3">
+        <button
+          type="submit"
+          disabled={uploading}
+          className="inline-flex items-center rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-700 disabled:opacity-50"
+        >
+          {submitLabel}
+        </button>
+      </div>
+      </form>
+
+      {project && (
+        <form action={deleteProjectAction} className="mt-3">
+          <input type="hidden" name="id" value={project.id} />
+          <button
+            type="submit"
+            className="inline-flex items-center rounded-lg border border-rose-200 px-4 py-2 text-sm font-semibold text-rose-700 transition hover:bg-rose-50"
+          >
+            Delete Project
+          </button>
+        </form>
+      )}
+    </>
   );
 }

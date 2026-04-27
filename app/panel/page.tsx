@@ -53,7 +53,7 @@ export default async function PanelPage({ searchParams }: PanelPageProps) {
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto max-w-xl px-4">
           <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-cyan-700">Hidden route</p>
+            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">Hidden route</p>
             <h1 className="text-3xl font-bold text-slate-900">Portfolio panel</h1>
             <p className="mt-3 text-slate-600">
               This page is intentionally not linked anywhere. Enter the panel password to manage projects.
@@ -72,15 +72,15 @@ export default async function PanelPage({ searchParams }: PanelPageProps) {
                   type="password"
                   name="password"
                   required
-                  className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200"
+                  className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
                 />
               </label>
-              <button className="rounded-lg bg-cyan-600 px-4 py-2 font-semibold text-white transition hover:bg-cyan-700">
+              <button className="rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white transition hover:bg-sky-700">
                 Unlock panel
               </button>
             </form>
 
-            <Link href="/" className="mt-5 inline-block text-sm font-semibold text-cyan-700 hover:text-cyan-800">
+            <Link href="/" className="mt-5 inline-block text-sm font-semibold text-sky-700 hover:text-sky-800">
               ← Back to home
             </Link>
           </div>
@@ -96,7 +96,7 @@ export default async function PanelPage({ searchParams }: PanelPageProps) {
       <div className="container mx-auto max-w-7xl px-4">
         <div className="mb-8 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:flex-row md:items-start md:justify-between">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-700">Hidden CMS</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">Hidden CMS</p>
             <h1 className="text-3xl font-bold text-slate-900">Portfolio control panel</h1>
             <p className="mt-2 max-w-2xl text-slate-600">
               Add new projects, update existing content, and edit the markdown article shown on each project page.
@@ -123,7 +123,7 @@ export default async function PanelPage({ searchParams }: PanelPageProps) {
         </div>
 
         {statusMessage && (
-          <div className="mb-6 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+          <div className="mb-6 rounded-lg border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-700">
             {statusMessage}
           </div>
         )}
@@ -148,17 +148,9 @@ export default async function PanelPage({ searchParams }: PanelPageProps) {
           <div className="space-y-6">
             {projects.map((project) => (
               <article key={project.id} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <h2 className="text-xl font-bold text-slate-900">{project.title}</h2>
-                    <p className="text-sm text-slate-500">Public URL: /projects/{project.id}</p>
-                  </div>
-                  <form action={deleteProjectAction}>
-                    <input type="hidden" name="id" value={project.id} />
-                    <button className="rounded-lg border border-rose-200 px-4 py-2 text-sm font-semibold text-rose-700 transition hover:bg-rose-50">
-                      Delete project
-                    </button>
-                  </form>
+                <div className="mb-4">
+                  <h2 className="text-xl font-bold text-slate-900">{project.title}</h2>
+                  <p className="text-sm text-slate-500">Public URL: /projects/{project.id}</p>
                 </div>
 
                 <ProjectEditorForm project={project} submitLabel="Save changes" />
