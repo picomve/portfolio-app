@@ -1,24 +1,20 @@
 [
   {
-    "id": 2,
-    "title": "Örnek proje hojam",
-    "description": "Kısa açıklamaa",
-    "image": "https://3h9k6k3nigp5apzk.public.blob.vercel-storage.com/portfolio-1776982929953-02.jpeg",
+    "id": 1,
+    "title": "Portfolio-app",
+    "description": "A modern Next.js portfolio with a built-in CMS, Markdown support, and a secure contact system",
+    "image": "https://3h9k6k3nigp5apzk.public.blob.vercel-storage.com/portfolio-1777464558991-Ekran_G_r_nt_s___345_.png",
     "technologies": [
-      "Node js",
-      "Electron js"
+      "React 19",
+      "Next.js 16",
+      "TypeScript",
+      "Tailwind CSS",
+      "Vercel Blob",
+      "Resend API",
+      "React Markdown"
     ],
-    "details": "asdad\r\noara\r\nbuara\r\nne bilim bişeler\r\n\r\nAnd i decided that why i dont show my skills using a project that shows my skills"
-  },
-  {
-    "id": 3,
-    "title": "Bakalim hadi demet akalın",
-    "description": "Bşak bir açklama daha",
-    "image": "https://3h9k6k3nigp5apzk.public.blob.vercel-storage.com/portfolio-1777066960184-1383-karma-%C3%B6zel-galerinizdeki-shitpostlar%C4%B1-d%C3%B6kme-postu-v0-b927yuisvyhe1.webp",
-    "technologies": [
-      "Bombabomba.com",
-      "TaklacıGüvercin"
-    ],
-    "details": "asd\r\nads\r\nad\r\nsad\r\nsad"
+    "githubUrl": "https://github.com/picomve/portfolio-app",
+    "liveUrl": "https://picomve.com.tr/",
+    "details": "This project is a professional, full-stack portfolio application designed to showcase development skills and projects with a focus on speed and clean design.\r\n\r\nKey Features:\r\n\r\nDynamic Project Management: Includes a hidden, password-protected administrative panel (CMS) that allows the user to create, update, and delete projects directly through the UI.\r\n\r\nMarkdown Support: Each project detail page renders full Markdown content, enabling rich text descriptions, code blocks, and formatted lists for project case studies.\r\n\r\nOptimized Image Handling: Integrated with Vercel Blob storage, the application supports direct image uploads for project thumbnails and previews with real-time previewing during the upload process.\r\n\r\nContact System: A fully functional contact form powered by the Resend API, featuring server-side validation and automated email delivery to stay in touch with potential clients or collaborators.\r\n\r\nPerformance and SEO: Built using Next.js 16 with server-side rendering (SSR) and static site generation (SSG) principles, ensuring fast load times and search engine visibility.\r\n\r\nModern UI/UX: Styled with Tailwind CSS for a fully responsive, mobile-first experience featuring a clean, professional aesthetic."
   }
 ]
